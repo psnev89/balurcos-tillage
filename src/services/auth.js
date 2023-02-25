@@ -39,7 +39,9 @@ export const loginUser = ({ email, password }) => {
 
 // logout user
 export const logoutUser = async () => {
-  await signOut();
+  return new Promise((resolve, reject) => {
+    signOut(auth).then(resolve).catch(reject);
+  });
 };
 
 // get current user (from https://github.com/firebase/firebase-js-sdk/issues/462)
